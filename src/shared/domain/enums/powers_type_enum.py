@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class POWERS_TYPE(Enum):
-    CLOWN: "CLOWN"
+    CLOWN= "CLOWN"
     ICE = "ICE"
     RIDDLES = "RIDDLES"
     GANGSTER = "GANGSTER"

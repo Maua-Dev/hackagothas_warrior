@@ -19,6 +19,6 @@ class CriminalRecord(abc.ABC):
             raise EntityError("villain")
         self.villain = villain
 
-        if type(crimes) != List[Crime]:
+        if type(crimes) != list:
             raise EntityError("crimes")
         self.crimes = crimes

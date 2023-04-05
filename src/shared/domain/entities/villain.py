@@ -60,7 +60,7 @@ class Villain(abc.ABC):
     def validate_powers(powers: List[POWERS_TYPE]) -> bool:
         if powers is None:
             return False
-        elif type(powers) != List[POWERS_TYPE]:
+        elif type(powers) != list:
             return False
         elif len(powers) < 1:
             return False
