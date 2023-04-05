@@ -62,6 +62,8 @@ class Villain(abc.ABC):
             return False
         elif type(powers) != list:
             return False
+        elif not all(isinstance(power, POWERS_TYPE) for power in powers):
+            return False
         elif len(powers) < 1:
             return False
         return True
