@@ -13,7 +13,7 @@ class Test_Crime():
         assert crime.crime_type == CRIME_TYPE.CATCHED_A_ROBIN
         assert crime.region == REGION_ENUM.NORTH
 
-    def test_CRIME_invalid_crime_id(self):
+    def test_crime_invalid_crime_id(self):
         with pytest.raises(EntityError):
             crime = Crime(crime_id='1', crime_type=CRIME_TYPE.CATCHED_A_ROBIN, region=REGION_ENUM.NORTH)
 
