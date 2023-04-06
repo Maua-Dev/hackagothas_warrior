@@ -11,7 +11,7 @@ from src.shared.helpers.errors.usecase_errors import NoItemsFound
 
 class CriminalRecordRepositoryMock(ICriminalRecordRepository):
 
-    crimialRecordList = []
+    criminal_records_list = []
 
     villain_01 = Villain(villain_id=1, name="Pinguim", description="Um anão muito GANG GANG BRO", genre=GENRE_ENUM.MALE, region=REGION_ENUM.NORTH, powers=[POWERS_TYPE.GANGSTER], is_arrested=True)
     villain_02 = Villain(villain_id=2, name="Bane", description="Viagra Foda", genre=GENRE_ENUM.MALE, region=REGION_ENUM.EAST, powers=[POWERS_TYPE.GANGSTER], is_arrested=False)
@@ -19,7 +19,7 @@ class CriminalRecordRepositoryMock(ICriminalRecordRepository):
     criminalRecord = CriminalRecord(criminal_record_id=1, villain=villain_01, crimes=[CRIME_TYPE.MURDER])
 
     def __init__(self):
-        self.crimialRecordList = [
+        self.criminal_records_list = [
             CriminalRecord(1, self.villain_01, [CRIME_TYPE.MURDER]),
             CriminalRecord(2, self.villain_02, [CRIME_TYPE.GANG_FORMATION]),
             CriminalRecord(3, self.villain_01, [CRIME_TYPE.GANG_FORMATION]),
@@ -28,33 +28,33 @@ class CriminalRecordRepositoryMock(ICriminalRecordRepository):
         ]
 
     def get_all_criminal_records(self):
-        return self.crimialRecordList
+        return self.criminal_records_list
 
     def get_criminal_record(self, criminal_record_id:int):
-        for record in self.crimialRecordList:
+        for record in self.criminal_records_list:
             if record.criminal_record_id == criminal_record_id:
                 return record
         raise NoItemsFound("criminal_record_id")
 
     def get_criminal_record_by_villain(self, villain_id:int):
         recordList = []
-        for record in self.crimialRecordList:
+        for record in self.criminal_records_list:
             if record.villain.villain_id == villain_id:
                 recordList.append(record)
         return recordList
 
     def create_criminal_record(self, new_criminal_record:CriminalRecord):
-        self.crimialRecordList.append(new_criminal_record)
+        self.criminal_records_list.append(new_criminal_record)
         return new_criminal_record
 
     def delete_criminal_record(self, criminal_record_id:int):
-        for idx, record in enumerate(self.crimialRecordList):
+        for idx, record in enumerate(self.criminal_records_list):
             if record.criminal_record_id == criminal_record_id:
-                return self.crimialRecordList.pop(idx)
+                return self.criminal_records_list.pop(idx)
         raise NoItemsFound("criminal_record_id")
 
     def update_criminal_record(self, new_criminal_record:CriminalRecord):
-        for record in self.crimialRecordList:
+        for record in self.criminal_records_list:
             if record.criminal_record_id == new_criminal_record.criminal_record_id:
                 record = new_criminal_record
                 return record

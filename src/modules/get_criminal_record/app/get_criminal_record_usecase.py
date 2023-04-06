@@ -9,5 +9,5 @@ class GetCriminalRecordUsecase:
 
     def __call__(self, criminal_record_id: int) -> CriminalRecord:
         if type(criminal_record_id) != int:
-            raise EntityError("user_id")
+            raise EntityError("criminal_record_id")
         return self.repository.get_criminal_record(criminal_record_id)
