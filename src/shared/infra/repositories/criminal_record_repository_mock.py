@@ -11,7 +11,7 @@ from src.shared.helpers.errors.usecase_errors import NoItemsFound
 
 class CriminalRecordRepositoryMock(ICriminalRecordRepository):
 
-    crimialRecordList: list[CriminalRecord]
+    crimialRecordList = []
 
     villain_01 = Villain(villain_id=1, name="Pinguim", description="Um anão muito GANG GANG BRO", genre=GENRE_ENUM.MALE, region=REGION_ENUM.NORTH, powers=[POWERS_TYPE.GANGSTER], is_arrested=True)
     villain_02 = Villain(villain_id=2, name="Bane", description="Viagra Foda", genre=GENRE_ENUM.MALE, region=REGION_ENUM.EAST, powers=[POWERS_TYPE.GANGSTER], is_arrested=False)
@@ -37,10 +37,10 @@ class CriminalRecordRepositoryMock(ICriminalRecordRepository):
         raise NoItemsFound("criminal_record_id")
 
     def get_criminal_record_by_villain(self, villain_id:int):
-        recordList: List[CriminalRecord]
+        recordList = []
         for record in self.crimialRecordList:
             if record.villain.villain_id == villain_id:
-                recordList.add(record)
+                recordList.append(record)
         return recordList
 
     def create_criminal_record(self, new_criminal_record:CriminalRecord):
@@ -55,7 +55,7 @@ class CriminalRecordRepositoryMock(ICriminalRecordRepository):
 
     def update_criminal_record(self, new_criminal_record:CriminalRecord):
         for record in self.crimialRecordList:
-            if record.user_id == new_criminal_record.criminal_record_id:
+            if record.criminal_record_id == new_criminal_record.criminal_record_id:
                 record = new_criminal_record
                 return record
         raise NoItemsFound("criminal_record_id")

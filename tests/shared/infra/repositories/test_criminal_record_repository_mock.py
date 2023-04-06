@@ -18,7 +18,7 @@ class Test_CriminalRecordRepositoryMock:
         repo = CriminalRecordRepositoryMock()
         criminal_records = repo.get_criminal_record_by_villain(1)
 
-        assert len(criminal_records) == 1
+        assert len(criminal_records) == 2
 
     def test_create_criminal_record(self):
         repo = CriminalRecordRepositoryMock()
