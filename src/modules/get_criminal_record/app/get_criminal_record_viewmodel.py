@@ -17,7 +17,15 @@ class GetCriminalRecordViewmodel:
     def to_dict(self):
         return {
             'criminal_record_id': self.criminal_record_id,
-            'villain': self.villain,
+            'villain': {
+                'villain_id': self.villain.villain_id,
+                'name': self.villain.name,
+                'description': self.villain.description,
+                'genre': self.villain.genre,
+                'region': self.villain.region,
+                'powers': self.villain.powers,
+                'is_arrested': self.villain.is_arrested
+            },
             'crimes': self.crimes,
             'message': "the criminal_record was retrieved successfully"
         }
