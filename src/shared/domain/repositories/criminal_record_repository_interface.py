@@ -10,21 +10,21 @@ class ICriminalRecordRepository(ABC):
         pass
 
     @abstractmethod
-    def get_criminal_record(self) -> CriminalRecord:
+    def get_criminal_record(self, criminal_record_id:int) -> CriminalRecord:
         pass
 
     @abstractmethod
-    def get_criminal_record_by_villain(self) -> List[CriminalRecord]:
+    def get_criminal_record_by_villain(self, villain_id:int) -> List[CriminalRecord]:
         pass
     
     @abstractmethod
-    def create_criminal_record(self) -> CriminalRecord:
+    def create_criminal_record(self, criminal_record:CriminalRecord) -> CriminalRecord:
         pass
 
     @abstractmethod
-    def delete_criminal_record(self) -> CriminalRecord:
+    def delete_criminal_record(self, criminal_record_id:int) -> CriminalRecord:
         pass
 
     @abstractmethod
-    def update_criminal_record(self) -> CriminalRecord:
+    def update_criminal_record(self, new_criminal_record:CriminalRecord) -> CriminalRecord:
         pass
