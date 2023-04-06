@@ -22,9 +22,6 @@ class GetCriminalRecordController:
                     fieldTypeReceived=request.data.get('criminal_record_id').__class__.__name__
                 )
 
-            if not request.data.get('criminal_record_id').isdecimal():
-                raise EntityError("criminal_record_id")
-
             criminal_record = self.GetCriminalRecordUsecase(
                 criminal_record_id=int(request.data.get('criminal_record_id'))
             )
