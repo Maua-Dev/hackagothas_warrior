@@ -6,15 +6,10 @@ from src.shared.helpers.errors.domain_errors import EntityError
 
 
 class Crime(abc.ABC):
-    crime_id: int
     crime_type: CRIME_TYPE
     region: REGION_ENUM
 
-    def __init__(self, crime_id: int, crime_type: CRIME_TYPE, region: REGION_ENUM):
-        if type(crime_id) != int:
-            raise EntityError("id")
-        self.crime_id = crime_id
-
+    def __init__(self, crime_type: CRIME_TYPE, region: REGION_ENUM):
         if type(crime_type) != CRIME_TYPE:
             raise EntityError("crime_type")
         self.crime_type = crime_type

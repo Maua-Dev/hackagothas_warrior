@@ -1,4 +1,5 @@
 from typing import List
+from src.shared.domain.entities.crime import Crime
 from src.shared.domain.entities.criminal_record import CriminalRecord
 from src.shared.domain.entities.villain import Villain
 from src.shared.domain.enums.crime_type_enum import CRIME_TYPE
@@ -16,15 +17,15 @@ class CriminalRecordRepositoryMock(ICriminalRecordRepository):
     villain_01 = Villain(villain_id=1, name="Pinguim", description="Um anão muito GANG GANG BRO", genre=GENRE_ENUM.MALE, region=REGION_ENUM.NORTH, powers=[POWERS_TYPE.GANGSTER], is_arrested=True)
     villain_02 = Villain(villain_id=2, name="Bane", description="Viagra Foda", genre=GENRE_ENUM.MALE, region=REGION_ENUM.EAST, powers=[POWERS_TYPE.GANGSTER], is_arrested=False)
     villain_03 = Villain(villain_id=3, name="Arlequina", description="Margot Robbie", genre=GENRE_ENUM.FEMALE, region=REGION_ENUM.SOUTH, powers=[POWERS_TYPE.GANGSTER], is_arrested=False)
-    criminalRecord = CriminalRecord(criminal_record_id=1, villain=villain_01, crimes=[CRIME_TYPE.MURDER])
+    criminalRecord = CriminalRecord(criminal_record_id=1, villain=villain_01, crimes=[Crime(crime_type=CRIME_TYPE.MURDER, region=REGION_ENUM.NORTH)])
 
     def __init__(self):
         self.criminal_records_list = [
-            CriminalRecord(1, self.villain_01, [CRIME_TYPE.MURDER]),
-            CriminalRecord(2, self.villain_02, [CRIME_TYPE.GANG_FORMATION]),
-            CriminalRecord(3, self.villain_01, [CRIME_TYPE.GANG_FORMATION]),
-            CriminalRecord(4, self.villain_03, [CRIME_TYPE.MURDER]),
-            CriminalRecord(5, self.villain_03, [CRIME_TYPE.CARRYING_RIDDLES]),
+            CriminalRecord(1, self.villain_01, [Crime(crime_type=CRIME_TYPE.CATCHED_A_ROBIN, region=REGION_ENUM.NORTH)]),
+            CriminalRecord(2, self.villain_02, [Crime(crime_type=CRIME_TYPE.CARRYING_RIDDLES, region=REGION_ENUM.NORTH)]),
+            CriminalRecord(3, self.villain_01, [Crime(crime_type=CRIME_TYPE.MURDER, region=REGION_ENUM.NORTH)]),
+            CriminalRecord(4, self.villain_03, [Crime(crime_type=CRIME_TYPE.GANG_FORMATION, region=REGION_ENUM.NORTH)]),
+            CriminalRecord(5, self.villain_03, [Crime(crime_type=CRIME_TYPE.MURDER, region=REGION_ENUM.NORTH)]),
         ]
 
     def get_all_criminal_records(self):
