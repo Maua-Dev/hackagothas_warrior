@@ -1,17 +1,19 @@
 from src.modules.get_criminal_record.app.get_criminal_record_controller import GetCriminalRecordController
 from src.modules.get_criminal_record.app.get_criminal_record_usecase import GetCriminalRecordUsecase
 from src.shared.environments import Environments
+from src.shared.helpers.external_interfaces.http_fastapi_requests import FastAPIHttpRequest, FastAPIHttpResponse
 from src.shared.helpers.external_interfaces.http_lambda_requests import LambdaHttpRequest, LambdaHttpResponse
+from src.shared.infra.repositories.criminal_record_repository_mock import CriminalRecordRepositoryMock
 
 
-repo = Environments.get_user_repo()()
-usecase = GetCriminalRecordUsecase(repo)
-controller = GetCriminalRecordController(usecase)
 
-def lambda_handler(event, context):
+def get_criminal_record_presenter(event, context):
+    repo = CriminalRecordRepositoryMock()
+    usecase = GetCriminalRecordUsecase(repo)
+    controller = GetCriminalRecordController(usecase)
 
-    httpRequest = LambdaHttpRequest(data=event)
+    httpRequest = FastAPIHttpRequest(data=event)
     response = controller(httpRequest)
-    httpResponse = LambdaHttpResponse(status_code=response.status_code, body=response.body, headers=response.headers)
+    httpResponse = FastAPIHttpResponse(status_code=response.status_code, body=response.body, headers=response.headers)
 
-    return httpResponse.toDict()
+    return httpResponse.to_dict()

@@ -68,5 +68,5 @@ class GetCriminalRecordViewmodel:
             'criminal_record_id': self.criminal_record_id,
             'villain': self.villain.to_dict(),
             'crimes': [crime.to_dict() for crime in self.crimes],
-            'message': "the criminal_record was retrieved successfully"
+            'message': 'the criminal_record was retrieved successfully'
         }
