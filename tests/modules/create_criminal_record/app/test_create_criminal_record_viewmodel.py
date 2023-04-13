@@ -1,4 +1,4 @@
-from src.modules.get_criminal_record.app.get_criminal_record_viewmodel import GetCriminalRecordViewmodel
+from src.modules.create_criminal_record.app.create_criminal_record_viewmodel import CreateCriminalRecordViewmodel
 from src.shared.domain.entities.crime import Crime
 from src.shared.domain.entities.criminal_record import CriminalRecord
 from src.shared.domain.entities.villain import Villain
@@ -8,13 +8,12 @@ from src.shared.domain.enums.powers_type_enum import POWERS_TYPE
 from src.shared.domain.enums.region_enum import REGION_ENUM
 
 
-class Test_GetCriminalRecordViewmodel:
-    def test_get_criminal_record_viewmodel(self):
-
+class Test_CreateCriminalRecordViewmodel:
+    def test_create_criminal_record_viewmodel(self):
         villain = Villain(villain_id=1, name="Pinguim", description="Um anão muito GANG GANG BRO", genre=GENRE_ENUM.MALE, region=REGION_ENUM.NORTH, powers=[POWERS_TYPE.GANGSTER], is_arrested=True)
         record = CriminalRecord(criminal_record_id=0, villain=villain, crimes=[Crime(crime_type=CRIME_TYPE.CARRYING_RIDDLES, region=REGION_ENUM.NORTH)])
 
-        recordViewmodel = GetCriminalRecordViewmodel(criminal_record=record).to_dict()
+        recordViewmodel = CreateCriminalRecordViewmodel(criminal_record=record).to_dict()
         expected = {
             'criminal_record_id': record.criminal_record_id,
             'villain': {
@@ -32,7 +31,7 @@ class Test_GetCriminalRecordViewmodel:
                     'region': record.crimes[0].region.value
                 }
             ],
-            'message': "the criminal_record was retrieved successfully"
+            'message': "the criminal_record was created successfully"
         }
        
         assert expected == recordViewmodel
