@@ -28,4 +28,4 @@ class CreateCriminalRecordUsecase:
             raise EntityError("is_arrested")
         if not criminal_record.crimes != list:
             raise EntityError("crimes")
-        return self.repository.create(criminal_record)
+        return self.repository.create_criminal_record(criminal_record)
