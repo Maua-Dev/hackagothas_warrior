@@ -1,3 +1,4 @@
+from src.modules.delete_criminal_record.app.delete_criminal_record_viewmodel import DeleteCriminalRecordViewmodel
 from src.modules.get_criminal_record.app.get_criminal_record_viewmodel import GetCriminalRecordViewmodel
 from src.shared.domain.entities.crime import Crime
 from src.shared.domain.entities.criminal_record import CriminalRecord
@@ -13,7 +14,7 @@ class Test_DeleteCriminalRecordViewmodel:
         villain = Villain(villain_id=1, name="Pinguim", description="Um anão muito GANG GANG BRO", genre=GENRE_ENUM.MALE, region=REGION_ENUM.NORTH, powers=[POWERS_TYPE.GANGSTER], is_arrested=True)
         record = CriminalRecord(criminal_record_id=0, villain=villain, crimes=[Crime(crime_type=CRIME_TYPE.CARRYING_RIDDLES, region=REGION_ENUM.NORTH)])
 
-        recordViewmodel = GetCriminalRecordViewmodel(criminal_record=record).to_dict()
+        recordViewmodel = DeleteCriminalRecordViewmodel(criminal_record=record).to_dict()
         expected = {
             'criminal_record_id': record.criminal_record_id,
             'villain': {
