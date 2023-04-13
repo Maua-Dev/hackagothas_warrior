@@ -10,4 +10,4 @@ class DeleteCriminalRecordUsecase:
     def __call__(self, criminal_record_id: int) -> CriminalRecord:
         if type(criminal_record_id) != int:
             raise EntityError("criminal_record_id")
-        self.repository.delete_criminal_record(criminal_record_id)
+        return self.repository.delete_criminal_record(criminal_record_id)
