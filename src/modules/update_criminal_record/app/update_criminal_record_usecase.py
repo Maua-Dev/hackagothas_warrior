@@ -9,23 +9,23 @@ class UpdateCriminalRecordUsecase:
     def __init__(self, repository: ICriminalRecordRepository):
         self.repository = repository
 
-    def __call__(self, criminal_record: CriminalRecord) -> CriminalRecord:
-        if not criminal_record.criminal_record_id != int:
+    def __call__(self, new_criminal_record: CriminalRecord) -> CriminalRecord:
+        if not new_criminal_record.criminal_record_id != int:
             raise EntityError("criminal_record_id")
-        if not criminal_record.villain.villain_id != int:
+        if not new_criminal_record.villain.villain_id != int:
             raise EntityError("villain_id")
-        if not criminal_record.villain.validate_name(criminal_record.villain.name):
+        if not new_criminal_record.villain.validate_name(new_criminal_record.villain.name):
             raise EntityError("name")
-        if not criminal_record.villain.description != str:
+        if not new_criminal_record.villain.description != str:
             raise EntityError("description")
-        if not criminal_record.villain.genre != GENRE_ENUM:
+        if not new_criminal_record.villain.genre != GENRE_ENUM:
             raise EntityError("genre")
-        if not criminal_record.villain.region != REGION_ENUM:
+        if not new_criminal_record.villain.region != REGION_ENUM:
             raise EntityError("region")
-        if not criminal_record.villain.validate_powers(criminal_record.villain.powers):
+        if not new_criminal_record.villain.validate_powers(new_criminal_record.villain.powers):
             raise EntityError("powers")
-        if not criminal_record.villain.is_arrested != bool:
+        if not new_criminal_record.villain.is_arrested != bool:
             raise EntityError("is_arrested")
-        if not criminal_record.crimes != list:
+        if not new_criminal_record.crimes != list:
             raise EntityError("crimes")
-        return self.repository.update_criminal_record(criminal_record)
+        return self.repository.update_criminal_record(new_criminal_record)
