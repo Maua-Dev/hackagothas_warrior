@@ -6,7 +6,7 @@ class Test_CriminalRecordRepositoryMock:
         repo = CriminalRecordRepositoryMock()
         criminal_records = repo.get_all_criminal_records()
 
-        assert len(criminal_records) == len(repo.crimialRecordList)
+        assert len(criminal_records) == len(repo.criminal_records_list)
     
     def test_get_criminal_record(self):
         repo = CriminalRecordRepositoryMock()
@@ -22,7 +22,7 @@ class Test_CriminalRecordRepositoryMock:
 
     def test_create_criminal_record(self):
         repo = CriminalRecordRepositoryMock()
-        new_criminal_record = repo.create_criminal_record(repo.crimialRecordList[0])
+        new_criminal_record = repo.create_criminal_record(repo.criminal_records_list[0])
 
         assert new_criminal_record.criminal_record_id == 1
     
@@ -34,6 +34,6 @@ class Test_CriminalRecordRepositoryMock:
     
     def test_update_criminal_record(self):
         repo = CriminalRecordRepositoryMock()
-        criminal_record = repo.update_criminal_record(repo.crimialRecordList[0])
+        criminal_record = repo.update_criminal_record(repo.criminal_records_list[0])
 
         assert criminal_record.criminal_record_id == 1
