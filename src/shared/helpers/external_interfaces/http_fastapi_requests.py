@@ -10,9 +10,9 @@ class FastAPIHttpRequest(HttpRequest):
     def __init__(self, data: dict = None) -> None:
 
         super().__init__(
-            body=data.get("headers", None),
-            headers=data.get("query_params", None),
-            query_params=data.get("body", None)
+            body=data.get("body", None),
+            headers=data.get("headers", None),
+            query_params=data.get("query_params", None)
         )
 
 
